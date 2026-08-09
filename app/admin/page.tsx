@@ -1,0 +1,10 @@
+"use client";
+
+import { Package, ShoppingCart, Users, TrendingUp, CheckCircle2, Clock3, XCircle } from "lucide-react";
+
+const orders=[
+ {id:"#SF-1048",customer:"Yassine A.",city:"Fes",product:"Training Set",amount:"249 DH",status:"Confirmed"},
+ {id:"#SF-1047",customer:"Sara M.",city:"Rabat",product:"Combat Gloves",amount:"199 DH",status:"Pending"},
+ {id:"#SF-1046",customer:"Omar B.",city:"Casablanca",product:"Essentials Pack",amount:"299 DH",status:"Shipped"},
+];
+export default function Admin(){return <main className="admin"><aside><a href="/" className="logo">SUPER<span>FITSS</span></a><div className="admin-nav"><a className="active" href="/admin">Dashboard</a><a>Orders</a><a>Products</a><a>Customers</a><a>Inventory</a><a>Settings</a></div></aside><section className="admin-main"><header><div><p className="section-kicker">STORE MANAGEMENT</p><h1>Dashboard</h1></div><a className="btn btn-accent" href="/">View store</a></header><div className="stats">{[[<ShoppingCart/>,"Orders","128"],[<TrendingUp/>,"Revenue","31,450 DH"],[<Users/>,"Customers","96"],[<Package/>,"Products","24"]].map(([icon,title,value])=><div className="stat" key={String(title)}><div className="stat-icon">{icon}</div><span>{title}</span><strong>{value}</strong></div>)}</div><div className="panel"><div className="panel-head"><h2>Recent orders</h2><span className="muted">COD workflow</span></div><div className="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>City</th><th>Product</th><th>Total</th><th>Status</th></tr></thead><tbody>{orders.map(o=><tr key={o.id}><td><b>{o.id}</b></td><td>{o.customer}</td><td>{o.city}</td><td>{o.product}</td><td><b>{o.amount}</b></td><td><span className={`status ${o.status.toLowerCase()}`}>{o.status}</span></td></tr>)}</tbody></table></div></div><div className="panel quick"><h2>COD workflow</h2><div className="workflow"><span><Clock3/> Pending call</span><span><CheckCircle2/> Confirmed</span><span><Package/> Shipped</span><span><TrendingUp/> Delivered</span><span><XCircle/> Returned</span></div></div></section></main>}
